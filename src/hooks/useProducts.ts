@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import type { Product } from "../types/product";
-import NhanKC14k from "../image/NhanKC14k.png";
-import NhanVang18k from "../image/NhanVang18k.png";
-import NhanVang18kHoly from "../image/NhanVang18kHoly.png";
-import LacBac_VoSo from "../image/LacBac_VoSo.png";
-import NhanBac_HinhNo from "../image/NhanBac_HinhNo.png";
-import NhanBac_HinhTym from "../image/NhanBac_HinhTym.png";
-import DayChuyen_GotNuoc from "../image/DayChuyen_GotNuoc.png";
-import BongTai_VangTrang from "../image/BongTai_VangTrang.png";
+import NhanKC14k from "../images/NhanKC14k.png";
+import NhanVang18k from "../images/NhanVang18k.png";
+import NhanVang18kHoly from "../images/NhanVang18kHoly.png";
+import LacBac_VoSo from "../images/LacBac_VoSo.png";
+import NhanBac_HinhNo from "../images/NhanBac_HinhNo.png";
+import NhanBac_HinhTym from "../images/NhanBac_HinhTym.png";
+import DayChuyen_GotNuoc from "../images/DayChuyen_GotNuoc.png";
+import BongTai_VangTrang from "../images/BongTai_VangTrang.png";
 
 
 // ✅ Dữ liệu giả PNJ

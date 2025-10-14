@@ -8,9 +8,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import banner1 from "../image/banner1.png";
-import banner2 from "../image/banner2.png";
-import banner3 from "../image/banner3.png";
+import banner1 from "../images/banner1.png";
+import banner2 from "../images/banner2.png";
+import banner3 from "../images/banner3.png";
 
 
 const Home: React.FC = () => {
