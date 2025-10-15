@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import type { Product } from "../types/product";
 
-// ✅ Dữ liệu giả PNJ (không import ảnh trực tiếp nữa)
+// ✅ Dữ liệu giả PNJ
 const jewelryProducts: Product[] = [
   {
     id: 1,
@@ -25,7 +25,7 @@ const jewelryProducts: Product[] = [
     price: 6750000 / 25000,
     category: "Vàng trắng",
     description: "Lắc tay vàng trắng 14K PNJ, thiết kế nữ tính, thanh lịch.",
-    image: "/images/NhanVang18kHoly.png",
+    image: "/images/LacVang18k.png",
   },
   {
     id: 4,
@@ -53,18 +53,18 @@ const jewelryProducts: Product[] = [
   },
   {
     id: 7,
-    title: "Dây chuyền bạc PNJ nữ đính đá GotNuoc",
-    price: 950000 / 25000,
+    title: "Dây chuyền PNJ nữ đá Got Nước",
+    price: 1050000 / 25000,
     category: "Bạc",
-    description: "Dây chuyền bạc PNJ nữ đính đá GotNuoc phong cách dịu dàng.",
+    description: "Dây chuyền PNJ nữ đá Got Nước tinh tế.",
     image: "/images/DayChuyen_GotNuoc.png",
   },
   {
     id: 8,
-    title: "Bông tai vàng trắng PNJ cao cấp",
-    price: 950000 / 25000,
+    title: "Bông tai vàng trắng PNJ sang trọng",
+    price: 1950000 / 25000,
     category: "Vàng trắng",
-    description: "Bông tai vàng trắng PNJ tinh tế, sang trọng.",
+    description: "Bông tai vàng trắng PNJ thiết kế tinh xảo, thanh lịch.",
     image: "/images/BongTai_VangTrang.png",
   },
 ];

@@ -8,10 +8,17 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import banner1 from "../images/banner1.png";
-import banner2 from "../images/banner2.png";
-import banner3 from "../images/banner3.png";
+import NewsSection from "../components/NewsSection";
+import Footer from "../components/Footer";
 
+
+
+// ✅ Dùng đường dẫn public cho banner (không import trực tiếp)
+const banners = [
+  "/images/banner1.png",
+  "/images/banner2.png",
+  "/images/banner3.png",
+];
 
 const Home: React.FC = () => {
   const { data: products } = useProducts();
@@ -20,92 +27,68 @@ const Home: React.FC = () => {
 
   return (
     <div className="bg-gray-50">
-      
-    {/* 💎 Banner Carousel */}
-<Swiper
-  modules={[Autoplay, Pagination]}
-  autoplay={{ delay: 4000, disableOnInteraction: false }}
-  pagination={{ clickable: true }}
-  loop
-  className="w-full h-[500px] rounded-b-3xl overflow-hidden shadow-lg"
->
-  {/* Slide 1 */}
-  <SwiperSlide>
-    <div
-      className="relative flex items-center justify-center h-full text-white text-center"
-      style={{
-        backgroundImage: `url(${banner1})`,   // nếu dùng ảnh online thì đặt thẳng URL string
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <div className="absolute inset-0 bg-black/30" />
-      <div className="relative z-10 max-w-3xl px-4">
-        <h1 className="text-5xl font-extrabold mb-6 drop-shadow-lg text-yellow-300">
-          Ưu đãi ngày đôi
-        </h1>
-        <p className="text-lg mb-8 text-gray-100">
-          10 điểm phong cách – 10 phần rạng rỡ ✨
-        </p>
-        <Link
-          to="/products"
-          onClick={() => showToast("💎 Xem ưu đãi PNJ!")}
-          className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold px-6 py-3 rounded-lg shadow-md hover:shadow-xl transition-all"
-        >
-          Khám phá ngay
-        </Link>
-      </div>
-    </div>
-  </SwiperSlide>
-
-  {/* Slide 2 */}
-  <SwiperSlide>
-    <div
-      className="relative flex items-center justify-center h-full text-white text-center"
-      style={{
-        backgroundImage: `url(${banner2})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <div className="absolute inset-0 bg-black/40" />
-      <div className="relative z-10 max-w-3xl px-4">
-        <h1 className="text-5xl font-bold mb-6 text-yellow-200">Ưu đãi đến 4 triệu 💰</h1>
-        <p className="text-lg mb-8 text-gray-100">Quà tặng iPhone 17 mới nhất 📱</p>
-        <Link
-          to="/products"
-          className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold px-6 py-3 rounded-lg shadow-md hover:shadow-xl transition-all"
-        >
-          Xem ngay
-        </Link>
-      </div>
-    </div>
-  </SwiperSlide>
-
-  {/* Slide 3 */}
-  <SwiperSlide>
-    <div
-      className="relative flex items-center justify-center h-full text-white text-center"
-      style={{
-        backgroundImage: `url(${banner3})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <div className="absolute inset-0 bg-black/40" />
-      <div className="relative z-10 max-w-3xl px-4">
-        <h1 className="text-5xl font-bold mb-6 text-yellow-200">Bộ sưu tập mới 💍</h1>
-        <p className="text-lg mb-8 text-gray-100">Sang trọng – Thanh lịch – Quý phái</p>
-        <Link
-          to="/products"
-          className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold px-6 py-3 rounded-lg shadow-md hover:shadow-xl transition-all"
-        >
-          Khám phá ngay
-        </Link>
-      </div>
-    </div>
-  </SwiperSlide>
-</Swiper>
+      {/* 💎 Banner Carousel */}
+      <Swiper
+        modules={[Autoplay, Pagination]}
+        autoplay={{ delay: 4000, disableOnInteraction: false }}
+        pagination={{ clickable: true }}
+        loop
+        className="w-full h-[500px] rounded-b-3xl overflow-hidden shadow-lg"
+      >
+        {banners.map((src, index) => (
+          <SwiperSlide key={index}>
+            <div
+              className="relative flex items-center justify-center h-full text-white text-center"
+              style={{
+                backgroundImage: `url(${src})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+              <div className="absolute inset-0 bg-black/30" />
+              <div className="relative z-10 max-w-3xl px-4">
+                {index === 0 && (
+                  <>
+                    <h1 className="text-5xl font-extrabold mb-6 drop-shadow-lg text-yellow-300">
+                      Ưu đãi ngày đôi
+                    </h1>
+                    <p className="text-lg mb-8 text-gray-100">
+                      10 điểm phong cách – 10 phần rạng rỡ ✨
+                    </p>
+                  </>
+                )}
+                {index === 1 && (
+                  <>
+                    <h1 className="text-5xl font-bold mb-6 text-yellow-200">
+                      Ưu đãi đến 4 triệu 💰
+                    </h1>
+                    <p className="text-lg mb-8 text-gray-100">
+                      Quà tặng iPhone 17 mới nhất 📱
+                    </p>
+                  </>
+                )}
+                {index === 2 && (
+                  <>
+                    <h1 className="text-5xl font-bold mb-6 text-yellow-200">
+                      Bộ sưu tập mới 💍
+                    </h1>
+                    <p className="text-lg mb-8 text-gray-100">
+                      Sang trọng – Thanh lịch – Quý phái
+                    </p>
+                  </>
+                )}
+                <Link
+                  to="/products"
+                  onClick={() => showToast("💎 Khám phá ngay ưu đãi PNJ!")}
+                  className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold px-6 py-3 rounded-lg shadow-md hover:shadow-xl transition-all"
+                >
+                  Khám phá ngay
+                </Link>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
       {/* 🌟 Sản phẩm nổi bật */}
       <section className="max-w-7xl mx-auto px-4 py-12">
@@ -123,66 +106,76 @@ const Home: React.FC = () => {
         )}
       </section>
 
-      {/* 📰 Tin tức mới */}
-      <section className="bg-white py-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-6 text-center text-blue-600">
-            📰 Tin tức mới nhất
-          </h2>
+      
+     {/* 💎 Section Diamond */}
+<section className="bg-white py-20">
+  <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+    {/* Hình bên trái */}
+    <div className="flex justify-center">
+      <video
+        src="/video/banner-nhanKC.mp4"
+        autoPlay
+        muted
+        loop
+       playsInline
+       className="w-full max-w-md rounded-lg shadow-md"
+/>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                id: 1,
-                title: "🔥 Giảm giá lớn mùa thu - Mua sắm thông minh!",
-                desc: "Đừng bỏ lỡ cơ hội nhận ưu đãi lên đến 50% cho các sản phẩm công nghệ, phụ kiện và đồ gia dụng hot nhất năm.",
-                image:
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz6huZ9VoOJLrTEI42RddFWRC6RZ7H_-yZvQ&s",
-              },
-              {
-                id: 2,
-                title: "🆕 Ra mắt dòng sản phẩm công nghệ mới 2025",
-                desc: "Những thiết bị mới với thiết kế hiện đại, pin bền và hiệu năng vượt trội – sẵn sàng chinh phục mọi nhu cầu.",
-                image:
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUujUwFITsB84aAtZr7zTFB2Jrtazdejfo0Q&s",
+    </div>
 
-              },
-              {
-                id: 3,
-                title: "💡 Mẹo mua hàng online an toàn và tiết kiệm",
-                desc: "Hướng dẫn bạn cách chọn mua sản phẩm uy tín, tránh bị lừa đảo và săn được deal tốt nhất.",
-                image:
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdQRt_902m34fMRyfLooskZvxQr4rdh-YiTA&s",
-              },
-            ].map((news) => (
-              <div
-                key={news.id}
-                className="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-lg transition"
-              >
-                <img
-                  src={news.image}
-                  alt={news.title}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-4">
-                  <h3 className="font-semibold text-lg mb-2 text-gray-800">
-                    {news.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm mb-3">{news.desc}</p>
-                  <button
-                    onClick={() => showToast(`📰 Đang xem: ${news.title}`)}
-                    className="text-blue-600 font-medium hover:underline"
-                  >
-                    Đọc thêm →
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+    {/* Nội dung bên phải */}
+    <div className="text-center md:text-left">
+      <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-snug tracking-wide">
+        VẺ ĐẸP VĨNH CỬU<br className="hidden md:block" />– TỎA SÁNG CÙNG
+        <span className="text-blue-600 ml-2">DIAMOND 💎</span>
+      </h2>
+
+      <p className="text-gray-700 leading-relaxed mb-8 text-[17px] max-w-lg mx-auto md:mx-0">
+        <span className="font-semibold">Diamond Collection</span> mang đến sự
+        kết hợp hoàn hảo giữa nghệ thuật và tinh hoa chế tác. Mỗi viên kim
+        cương được tuyển chọn tỉ mỉ, phản chiếu ánh sáng rực rỡ và tinh khiết –
+        biểu tượng của sự sang trọng, thành công và tình yêu bất diệt.  
+        Hãy để <span className="font-semibold">Diamond</span> đồng hành cùng bạn,
+        tôn vinh vẻ đẹp riêng và khoảnh khắc đáng nhớ trong cuộc sống ✨
+      </p>
+
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className="bg-black text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-all duration-300 shadow-sm hover:shadow-md"
+      >
+        KHÁM PHÁ NGAY
+      </button>
+    </div>
+  </div>
+
+  {/* Dòng chữ KHÁM PHÁ DIAMOND */}
+  <div className="text-center mt-24">
+    <h3 className="text-gray-500 text-base font-semibold mb-2 tracking-wider uppercase">
+      KHÁM PHÁ
+    </h3>
+    <h1 className="text-6xl md:text-7xl font-extrabold text-gray-900 tracking-wider">
+      DIAMOND
+    </h1>
+    <p className="text-gray-400 mt-3 text-sm italic">
+      Shine Your Moment – Rực sáng từng khoảnh khắc ✨
+    </p>
+  </div>
+</section>
+
+     {/* 📰 Tin tức */}
+  <div className="bg-gray-50">
+    {/* ...Banner, sản phẩm nổi bật, video, v.v... */}
+
+    <NewsSection />  
+
+  </div>
+
     </div>
   );
 };
+
+<Footer />
+
+
 
 export default Home;

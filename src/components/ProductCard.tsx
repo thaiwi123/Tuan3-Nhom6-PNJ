@@ -28,7 +28,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-900 rounded-2xl shadow hover:shadow-yellow-400/40 transition-transform hover:-translate-y-1 hover:scale-[1.02] duration-200 p-4 flex flex-col justify-between h-full">
+    <div
+      className="bg-[#f9f9f9] rounded-2xl p-5 text-center text-gray-800 
+      shadow-[0_4px_12px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_20px_rgba(0,0,0,0.1)]
+      transition-all duration-300 ease-in-out hover:-translate-y-1 hover:scale-[1.02] cursor-pointer"
+    >
       {/* Ảnh sản phẩm */}
       <Link to={`/product/${product.id}`} className="block relative flex-1 mb-4">
         <img
@@ -36,19 +40,22 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           alt={product.title}
           className="w-full h-48 object-contain mb-3 rounded-lg transition-transform duration-300 hover:scale-105"
         />
-        <h3 className="font-semibold text-gray-800 dark:text-gray-100 text-center line-clamp-2 min-h-[3rem]">
+        <h3 className="font-medium text-gray-800 text-center line-clamp-2 min-h-[3rem] leading-snug">
           {product.title}
         </h3>
       </Link>
 
-      {/* Giá + Nút thêm giỏ */}
+      {/* Giá + khuyến mãi */}
       <div className="mt-auto">
-        <p className="text-yellow-600 dark:text-yellow-400 font-bold mb-3 text-center">
+        <p className="text-yellow-600 font-bold text-lg mb-1">
           {formatCurrency(product.price)}
         </p>
+        
+
         <button
           onClick={handleAddToCart}
-          className="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded-md w-full transition"
+          className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold 
+          px-4 py-2 rounded-lg shadow-sm hover:shadow-md transition-all w-full"
         >
           🛍️ Thêm vào giỏ hàng
         </button>
